@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "build": "docker build -t node-docker .",
-    "start": "docker run --rm -p 3000:3000 -d -v $(pwd)/public:/src/public -v $(pwd)/routes:/src/routes -v $(pwd)/views:/src/views --name node-docker-1 node-docker",
-    "stop": "docker rm -f node-docker-1"
+    "start": "docker run --rm -p 3000:3000 -v $(pwd)/app:/src/app -v $(pwd)/public:/src/public --name node-docker-container node-docker",
+    "start-d": "docker run --rm -p 3000:3000 -d -v $(pwd)/app:/src/app -v $(pwd)/public:/src/public --name node-docker-container node-docker",
+    "stop": "docker rm -f node-docker-container"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
@@ -14,6 +15,7 @@
     "express": "~4.15.5",
     "hbs": "~4.0.1",
     "morgan": "~1.9.0",
+    "nodemon": "^1.11.0",
     "serve-favicon": "~2.4.5"
   }
 }
