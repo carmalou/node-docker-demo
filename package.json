@@ -8,7 +8,8 @@
     "app:start": "docker run --rm -p 3000:3000 -d -v $(pwd)/app:/src/app -v $(pwd)/public:/src/public --link nd-db --name nd-app node-docker",
     "app:stop": "docker rm -f nd-app",
     "db:start": "docker run -d --rm -p 5432:5432 -e POSTGRES_USER=admin -v $(pwd)/.data:/var/lib/postgresql/data --name nd-db postgres:9.6",
-    "db:stop": "docker rm -f nd-db"
+    "db:stop": "docker rm -f nd-db",
+    "fe:start": "node_modules/.bin/webpack --config webpack.config.js"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
@@ -20,7 +21,17 @@
     "nodemon": "^1.13.3",
     "pg": "^6.4.2",
     "pg-hstore": "^2.3.2",
-    "sequelize": "~4.28.6",
-    "serve-favicon": "~2.4.5"
+    "sequelize": "~4.28.6"
+  },
+  "devDependencies": {
+    "bootstrap": "^4.0.0-beta.2",
+    "css-loader": "^0.28.7",
+    "file-loader": "^1.1.6",
+    "jquery": "^3.2.1",
+    "node-sass": "^4.7.2",
+    "popper.js": "^1.12.9",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.1",
+    "webpack": "^3.10.0"
   }
 }
