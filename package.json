@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "docker build -t node-docker .",
-    "start": "docker run --rm -p 3000:3000 -v $(pwd)/app:/src/app -v $(pwd)/public:/src/public --name node-docker-container node-docker",
+    "start": "docker run --rm -p 3000:3000 -v $(pwd)/app:/src/app -v $(pwd)/public:/src/public node-docker",
     "start-d": "docker run --rm -p 3000:3000 -d -v $(pwd)/app:/src/app -v $(pwd)/public:/src/public --name node-docker-container node-docker",
     "stop": "docker rm -f node-docker-container"
   },
