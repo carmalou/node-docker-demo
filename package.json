@@ -1,21 +1,26 @@
 {
-  "name": "untitled1",
+  "name": "node-docker",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "build": "docker build -t node-docker .",
-    "start": "docker run --rm -p 3000:3000 -v $(pwd)/app:/src/app -v $(pwd)/public:/src/public --name node-docker-container node-docker",
-    "start-d": "docker run --rm -p 3000:3000 -d -v $(pwd)/app:/src/app -v $(pwd)/public:/src/public --name node-docker-container node-docker",
-    "stop": "docker rm -f node-docker-container"
+    "start": "docker run --rm -p 3000:3000 -v $(pwd)/app:/src/app -v $(pwd)/public:/src/public --link nd-db node-docker",
+    "app:start": "docker run --rm -p 3000:3000 -d -v $(pwd)/app:/src/app -v $(pwd)/public:/src/public --link nd-db --name nd-app node-docker",
+    "app:stop": "docker rm -f nd-app",
+    "db:start": "docker run -d --rm -p 5432:5432 -e POSTGRES_USER=admin -v $(pwd)/.data:/var/lib/postgresql/data --name nd-db postgres:9.6",
+    "db:stop": "docker rm -f nd-db"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
-    "express": "~4.15.5",
+    "express": "~4.16.2",
     "hbs": "~4.0.1",
     "morgan": "~1.9.0",
-    "nodemon": "^1.11.0",
+    "nodemon": "^1.13.3",
+    "pg": "^6.4.2",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "~4.28.6",
     "serve-favicon": "~2.4.5"
   }
 }
