@@ -7,8 +7,10 @@ This is a simple Express app to demonstrate using Docker for local NodeJS app de
 - Clone this repo: `git clone https://github.com/karllhughes/node-docker-demo.git`
 - If you have npm installed on your host machine, you can run the shortcut commands:
   - Build the Docker image: `npm run build`.
-  - Run the container: `npm run start`.
+  - Run the database container: `npm run db:start`.
+  - Run the application container: `npm run app:start`.
   - The application will be running at `localhost:3000/`
+  - To stop the database and application, run `npm run db:stop && npm run app:stop`.
 
 If you don't want to run the npm commands on your machine, just take a look at the Docker commands in the `package.json` file for insight into what's going on behind the scenes.
   
